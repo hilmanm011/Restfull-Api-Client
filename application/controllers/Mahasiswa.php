@@ -7,6 +7,7 @@ class Mahasiswa extends CI_Controller
         parent::__construct();
         $this->load->model('Mahasiswa_model');
         $this->load->library('form_validation');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -75,5 +76,33 @@ class Mahasiswa extends CI_Controller
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('mahasiswa');
         }
+    }
+
+    public function pdf()
+    {
+        $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->setPrintFooter(false);
+        $pdf->setPrintHeader(false);
+        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->AddPage('');
+        $pdf->Write(0, 'Simpan ke PDF - Jaranguda.com', '', 0, 'L', true, 0, false, false, 0);
+        $pdf->SetFont('');
+
+        $tabel = '
+        <table border="1">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>NRP</th>
+                    <th>Email</th>
+                    <th>Jurusan</th>
+                </tr>
+            </thead>
+        </table>';
+        $pdf->writeHTML($tabel);
+        $pdf->Output('file-pdf-codeigniter.pdf', 'I');
     }
 }
