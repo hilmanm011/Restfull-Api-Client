@@ -13,7 +13,7 @@ class Mahasiswa_model extends CI_model
     {
 
         $this->_client = new Client([
-            'base_uri' => 'http://localhost/rest-server/api/'
+            'base_uri' => 'http://localhost/Restfull-Api-Server/api/'
         ]);
     }
 
