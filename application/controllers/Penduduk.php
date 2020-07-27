@@ -104,6 +104,7 @@ class Penduduk extends CI_Controller
 
     public function print()
     {
+        $data['title'] = 'Laporan Data Penduduk Desa Bojongkeding';
         $data['penduduk'] = $this->Penduduk_model->getAllPenduduk();
         $this->load->view('print_penduduk', $data);
     }
@@ -116,50 +117,38 @@ class Penduduk extends CI_Controller
         $pdf = new \TCPDF();
         $pdf->AddPage();
         $pdf->SetFont('', 'B', 12);
-        $pdf->Cell(115, 0, "Penduduk Tercatat / " . $tanggal, 0, 1, 'L');
+        $pdf->Cell(0, 0, "Daftar Penduduk Desa Bojongkeding", 0, 1, 'C');
         $pdf->SetAutoPageBreak(true, 0);
 
         // Add Header
         $pdf->Ln(10);
         $pdf->SetFont('', 'B', 10);
-        $pdf->Cell(10, 8, "Daftar Penduduk Desa Bojongkeding", 0, 1, 'L');
+        $pdf->Cell(10, 8, "Penduduk Tercatat / " . $tanggal, 0, 1, 'L');
+        $pdf->Cell(10, 8, "No", 1, 0, 'C');
         $pdf->Cell(50, 8, "Nomor NIK", 1, 0, 'C');
         $pdf->Cell(50, 8, "Nama", 1, 0, 'C');
         $pdf->Cell(50, 8, "Alamat", 1, 0, 'C');
-        // $pdf->Cell(40, 8, "Tanggal Lahir", 1, 0, 'C');
         $pdf->Cell(30, 8, "Jenis Kelamin", 1, 0, 'C');
-        // $pdf->Cell(50, 8, "status", 1, 1, 'C');
-        // $pdf->Cell(50, 8, "alamat", 1, 1, 'C');
-        // $pdf->Cell(50, 8, "pekerjaan", 1, 1, 'C');
-        // $pdf->Cell(50, 8, "kewarganegaraan", 1, 1, 'C');
-        // $pdf->Cell(50, 8, "agama", 1, 1, 'C');
         $pdf->SetFont('', '', 10);
         foreach ($data as $k => $penduduk) {
             $this->addRow($pdf, $k + 1, $penduduk);
         }
         $tanggal = date('d-m-Y');
-        $pdf->Output('Laporan penduduk - ' . $tanggal . '.pdf');
+        $pdf->Output('Laporan penduduk - ' . $tanggal . '.pdf', 'D');
     }
     private function addRow($pdf, $no, $penduduk)
     {
-        $pdf->Cell(10, 8, $no, 0, 1, 'R');
+        $pdf->Cell(10, 8, '', 0, 1, 'R');
+        $pdf->Cell(10, 8, $no, 1, 0, 'C');
         $pdf->Cell(50, 8, $penduduk['id_nik'], 1, 0, 'C');
-        // $pdf->Cell(35, 8, date('d-m-Y', strtotime($penduduk['tanggal'])), 1, 0, 'C');
-
         $pdf->Cell(50, 8, $penduduk['nama'], 1, 0, 'L');
         $pdf->Cell(50, 8, $penduduk['alamat'], 1, 0, 'L');
-        // $pdf->Cell(40, 8, $penduduk['tanggal_lahir'], 1, 0, 'C');
         $pdf->Cell(30, 8, $penduduk['jk'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, $penduduk['status'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, $penduduk['alamat'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, $penduduk['pekerjaan'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, $penduduk['kewarganegaraan'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, $penduduk['agama'], 1, 0, 'C');
 
         // $pdf->Cell(10, 8, $no, 1, 0, 'C');
         // $pdf->Cell(55, 8, $penduduk['id_nik'], 1, 0, '');
         // $pdf->Cell(35, 8, date('d-m-Y', strtotime($penduduk['tanggal'])), 1, 0, 'C');
         // $pdf->Cell(35, 8, $penduduk['id_kk'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, "Rp. " . number_format($penduduk['total'], 2, ',', '.'), 1, 1, 'L');
+        // $pdf->Cell(50, 8, "." . number_format($penduduk['total'], 2, ',', '.'), 1, 1, 'L');
     }
 }
