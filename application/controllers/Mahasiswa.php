@@ -81,14 +81,20 @@ class Mahasiswa extends CI_Controller
     public function pdf()
     {
         $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+        $tanggal = date('d-m-Y');
 
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setPrintFooter(false);
         $pdf->setPrintHeader(false);
         $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
         $pdf->AddPage('');
-        $pdf->Write(0, 'Simpan ke PDF - Jaranguda.com', '', 0, 'L', true, 0, false, false, 0);
+        $pdf->SetFont('', 'B');
+        $pdf->Write(0, 'Kependudukan Desa Bojongkeding
+        
+        ', '', 0, 'C', true, 0, false, false, 0);
         $pdf->SetFont('');
+        $pdf->Cell(115, 0, "Laporan Tercatat Pada Tanggal : " . $tanggal, 0, 1, 'L');
+        $pdf->SetAutoPageBreak(true, 0);
 
         $tabel = '
         <table border="1">
@@ -103,6 +109,7 @@ class Mahasiswa extends CI_Controller
             </thead>
         </table>';
         $pdf->writeHTML($tabel);
-        $pdf->Output('file-pdf-codeigniter.pdf', 'I');
+        $tanggal = date('d-m-Y');
+        $pdf->Output('file-pdf-' . $tanggal . '.pdf', 'I');
     }
 }

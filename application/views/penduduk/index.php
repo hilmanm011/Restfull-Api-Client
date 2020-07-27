@@ -155,7 +155,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold"><a href="<?= base_url(); ?>penduduk/tambah" class="shadow-sm btn btn-primary mb-2">Tambah Data</a>
 
-                        <a href="<?= base_url(); ?>penduduk/laporan_pdf" class="shadow-sm btn btn-warning mb-2" style="color: white;"><i class="fa fa-download"></i> PDF</a>
+                        <a href="<?= base_url(); ?>penduduk/export" target="_blank" class="shadow-sm btn btn-warning mb-2" style="color: white;"><i class="fa fa-download"></i> PDF</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
