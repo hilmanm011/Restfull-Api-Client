@@ -17,15 +17,15 @@ class Penduduk_model extends CI_model
         ]);
     }
 
-    // public function getJmlPenduduk()
-    // {
-    //     $response = $this->_client->request('GET', 'penduduk');
+    public function getJmlPenduduk()
+    {
 
-    //     $result = json_decode($response->getBody()->getContents(), true);
-    //     $result =  $result->count_all('data')->result_array();
-    //     return $result['data'];
-    //     return $this->db->count_all('data');
-    // }
+        $response = $this->_client->request('GET', 'penduduk');
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return count($result['data']);
+    }
 
     public function getAllPenduduk()
     {

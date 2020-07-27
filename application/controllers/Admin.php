@@ -13,15 +13,19 @@ class Admin extends CI_Controller
 
     public function __construct()
     {
+
         // date_default_timezone_set("Asia/Jakarta");
         parent::__construct();
+        $this->load->model('Mahasiswa_model');
+        $this->load->model('Penduduk_model');
         is_logged_in();
     }
 
 
     public function index()
     {
-        // $data['jumlah'] = $this->Penduduk_model->getJmlPenduduk();
+        $data['total_mhs'] = $this->Mahasiswa_model->getJmlMahasiswa();
+        $data['total_pndk'] = $this->Penduduk_model->getJmlPenduduk();
         $data['title'] = 'Home Admin Dashboard';
         // $data['user'] =  $this->db->get_where('user', ['username' =>
         // $this->session->userdata('username')])->row_array();
@@ -59,8 +63,8 @@ class Admin extends CI_Controller
         // $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
 
-        $this->load->view('user/header', $data);
+        $this->load->view('templates/header', $data);
         $this->load->view('blog/kelola_blog');
-        $this->load->view('user/footer');
+        $this->load->view('templates/footer');
     }
 }

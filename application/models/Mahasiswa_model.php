@@ -17,6 +17,16 @@ class Mahasiswa_model extends CI_model
         ]);
     }
 
+    public function getJmlMahasiswa()
+    {
+
+        $response = $this->_client->request('GET', 'mahasiswa');
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return count($result['data']);
+    }
+
     public function getAllMahasiswa()
     {
 
