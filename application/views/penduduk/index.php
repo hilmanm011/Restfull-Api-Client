@@ -43,7 +43,7 @@
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book"></i>
+            <i class="fas fa-book-reader"></i>
             <span>Kelola Data Mahasiswa</span></a>
     </li>
 
@@ -60,7 +60,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Info Desa :</h6>
                 <a class="collapse-item" href="<?= base_url('admin/blog') ?>">Lihat Blog</a>
-                <a class="collapse-item" href="cards.html">Kelola Blog</a>
+                <a class="collapse-item" href="<?= base_url('admin/kelola_blog') ?>">Kelola Blog</a>
             </div>
         </div>
     </li>
@@ -161,7 +161,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead class="thead-dark">
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>NIK</th>
                                     <th>Nama</th>
@@ -182,14 +182,14 @@
                                 $no = 1;
                                 foreach ($penduduk as $pndk) : ?>
                                     <tr>
-                                        <td><?= $no;
-                                            $no++; ?></td>
+                                        <td class="text-center"><?= $no;
+                                                                $no++; ?></td>
                                         <td><?= $pndk['id_nik']; ?></td>
                                         <td><?= $pndk['nama']; ?></td>
                                         <td><?= $pndk['alamat']; ?></td>
                                         <td><?= $pndk['tanggal_lahir']; ?></td>
                                         <td><?= $pndk['jk']; ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="<?= base_url(); ?>penduduk/detail/<?= $pndk['id']; ?>" class="badge badge-primary float-center"><i class="fas fa-user"></i> Lihat</a>
                                             <a href="<?= base_url(); ?>penduduk/ubah/<?= $pndk['id']; ?>" class="badge badge-success float-center"><i class="fas fa-edit"></i> Ubah</a>
                                             <a href="<?= base_url() ?>penduduk/hapus/<?= $pndk['id']; ?>" class="badge badge-danger float-center" data-toggle="modal" data-target="#hapusModal">

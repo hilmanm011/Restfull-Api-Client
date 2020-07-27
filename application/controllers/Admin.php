@@ -51,4 +51,16 @@ class Admin extends CI_Controller
         $this->load->view('blog/index');
         $this->load->view('user/footer');
     }
+
+
+    public function kelola_blog()
+    {
+        $data['title'] = 'Halaman Kelola blog';
+        // $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->load->view('user/header', $data);
+        $this->load->view('blog/kelola_blog');
+        $this->load->view('user/footer');
+    }
 }

@@ -52,14 +52,14 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-book-reader"></i>
             <span>Blog</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Info Desa :</h6>
                 <a class="collapse-item" href="<?= base_url('admin/blog') ?>">Lihat Blog</a>
-                <a class="collapse-item" href="cards.html">Kelola Blog</a>
+                <a class="collapse-item" href="<?= base_url('admin/kelola_blog') ?>">Kelola Blog</a>
             </div>
         </div>
     </li>
@@ -160,7 +160,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead class="thead-dark">
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>NRP</th>
@@ -180,13 +180,13 @@
                                 $no = 1;
                                 foreach ($mahasiswa as $mhs) : ?>
                                     <tr>
-                                        <td><?= $no;
-                                            $no++; ?></td>
+                                        <td class="text-center"><?= $no;
+                                                                $no++; ?></td>
                                         <td><?= $mhs['nama']; ?></td>
                                         <td><?= $mhs['nrp']; ?></td>
                                         <td><?= $mhs['email']; ?></td>
                                         <td><?= $mhs['jurusan']; ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="<?= base_url(); ?>mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-primary float-center"><i class="fas fa-user"></i> Lihat</a>
                                             <a href="<?= base_url(); ?>mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge badge-success float-center"><i class="fas fa-edit"></i> Ubah</a>
                                             <a href="<?= base_url() ?>mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge badge-danger float-center" data-toggle="modal" data-target="#hapusModal">
