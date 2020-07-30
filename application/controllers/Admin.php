@@ -27,8 +27,8 @@ class Admin extends CI_Controller
         $data['total_mhs'] = $this->Mahasiswa_model->getJmlMahasiswa();
         $data['total_pndk'] = $this->Penduduk_model->getJmlPenduduk();
         $data['title'] = 'Home Admin Dashboard';
-        // $data['user'] =  $this->db->get_where('user', ['username' =>
-        // $this->session->userdata('username')])->row_array();
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
 
 
 

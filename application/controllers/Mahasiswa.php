@@ -14,6 +14,8 @@ class Mahasiswa extends CI_Controller
     {
         $data['title'] = 'Daftar Mahasiswa';
         $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         if ($this->input->post('keyword')) {
             $data['mahasiswa'] = $this->Mahasiswa_model->cariDataMahasiswa();
         }
@@ -24,6 +26,8 @@ class Mahasiswa extends CI_Controller
 
     public function tambah()
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Form Tambah Data Mahasiswa';
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
@@ -32,7 +36,7 @@ class Mahasiswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('mahasiswa/tambah');
+            $this->load->view('mahasiswa/tambah', $data);
             $this->load->view('templates/footer');
         } else {
             $this->Mahasiswa_model->tambahDataMahasiswa();
@@ -43,6 +47,8 @@ class Mahasiswa extends CI_Controller
 
     public function hapus($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $this->Mahasiswa_model->hapusDataMahasiswa($id);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('mahasiswa');
@@ -50,6 +56,8 @@ class Mahasiswa extends CI_Controller
 
     public function detail($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Detail Data Mahasiswa';
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
         $this->load->view('templates/header', $data);
@@ -59,6 +67,8 @@ class Mahasiswa extends CI_Controller
 
     public function ubah($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Form Ubah Data Mahasiswa';
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
         $data['jurusan'] = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Planologi', 'Teknik Pangan', 'Teknik Lingkungan'];

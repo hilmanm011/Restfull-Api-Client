@@ -28,12 +28,11 @@
 
 
 
-    <li class="nav-item active">
+    <li class="nav-item  active">
         <a class="nav-link active text-primary" href="<?= base_url('penduduk/index') ?>">
             <i class="fas fa-address-book" style="color: #1abc9c;"></i>
             <span>Kelola Data Penduduk</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -43,7 +42,7 @@
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-book-reader"></i>
+            <i class="fas fa-address-book"></i>
             <span>Kelola Data Mahasiswa</span></a>
     </li>
 
@@ -53,7 +52,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-book-reader"></i>
             <span>Blog</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -111,7 +110,8 @@
     <!-- Main Content -->
     <div id="content">
         <!-- Topbar -->
-
+        <div class="text-center">
+            <?= $this->session->flashdata('message'); ?></div>
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow justify-content-right">
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -121,7 +121,7 @@
             <ul class="navbar-nav ml-auto">
                 <div class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small ">Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small "><?= $user['nama']; ?></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
                     </a>
                     <!-- Dropdown - User Information  -->

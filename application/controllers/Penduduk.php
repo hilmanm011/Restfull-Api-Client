@@ -12,6 +12,8 @@ class Penduduk extends CI_Controller
 
     public function index()
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Daftar Penduduk';
         $data['penduduk'] = $this->Penduduk_model->getAllPenduduk();
         // if ($this->input->post('keyword')) {
@@ -24,6 +26,8 @@ class Penduduk extends CI_Controller
 
     public function tambah()
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Form Tambah Data Penduduk';
 
         $this->form_validation->set_rules('id_nik', 'ID_NIK', 'required|numeric|trim', [
@@ -50,24 +54,36 @@ class Penduduk extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('penduduk/tambah');
+            $this->load->view('penduduk/tambah', $data);
             $this->load->view('templates/footer');
         } else {
             $this->Penduduk_model->tambahDataPenduduk();
-            $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">
+            Berhasil ditambahkan! </div>'
+            );
             redirect('penduduk');
         }
     }
 
     public function hapus($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $this->Penduduk_model->hapusDataPenduduk($id);
-        $this->session->set_flashdata('flash', 'Dihapus');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">
+        Berhasil dihapus! </div>'
+        );
         redirect('penduduk');
     }
 
     public function detail($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Detail Data Penduduk';
         $data['penduduk'] = $this->Penduduk_model->getPendudukById($id);
         $this->load->view('templates/header', $data);
@@ -77,6 +93,8 @@ class Penduduk extends CI_Controller
 
     public function ubah($id)
     {
+        $data['user'] =  $this->db->get_where('user', ['username' =>
+        $this->session->userdata('username')])->row_array();
         $data['title'] = 'Form Ubah Data Penduduk';
         $data['penduduk'] = $this->Penduduk_model->getPendudukById($id);
         $data['jk'] = ['Laki-Laki', 'Perempuan'];
@@ -96,7 +114,11 @@ class Penduduk extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->Penduduk_model->ubahDataPenduduk();
-            $this->session->set_flashdata('flash', 'Diubah');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">
+            Berhasil diubah! </div>'
+            );
             redirect('penduduk');
         }
     }

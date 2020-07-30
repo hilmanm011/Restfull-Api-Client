@@ -122,7 +122,7 @@
             <ul class="navbar-nav ml-auto">
                 <div class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small ">Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small "><?= $user['nama']; ?></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
                     </a>
                     <!-- Dropdown - User Information  -->
@@ -232,6 +232,42 @@
                 </div>
             </div>
 
+
+
+            <?php
+            // foreach ($data as $data) {
+            //     $jenis_pembayaran[] = $data->jenis_pembayaran;
+            //     $nominal_pembayaran[] = (float) $data->nominal_pembayaran;
+            // }
+            ?>
+
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="text-center" style="color: #1cc88a;">Informasi Statistik</h5>
+                    <canvas class="content-right" id="canvas" width="1000" height="280"></canvas>
+                    <!--Load chart js-->
+                    <script type="text/javascript" src="<?php echo base_url() . 'assets/chartjs/chart.min.js' ?>"></script>
+                    <script>
+                        var barChartData = {
+                            labels: <?php echo json_encode($total_mhs); ?>,
+                            datasets: [{
+                                fillColor: "#1cc88a",
+                                strokeColor: "rgba(60,141,188,0.8)",
+                                pointColor: "#3b8bba",
+                                pointStrokeColor: "#fff",
+                                pointHighlightFill: "#fff",
+                                pointHighlightStroke: "rgba(152,235,239,1)",
+                                data: <?php echo json_encode($total_pndk); ?>
+                            }]
+                        }
+                        var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+                    </script>
+                </div>
+            </div>
+
+
+
             <!-- Content Row -->
 
             <div class="row">
@@ -264,6 +300,8 @@
                     </div>
                 </div>
 
+
+
                 <!-- Pie Chart -->
                 <div class="col-xl-4 col-lg-5">
                     <div class="card shadow mb-4">
@@ -290,14 +328,13 @@
                             </div>
                             <div class="mt-4 text-center small">
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-primary"></i> Direct
+                                    <i class="fas fa-circle text-primary"></i> Laki-Laki
                                 </span>
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-success"></i> Social
+                                    <i class="fas fa-circle text-success"></i> Perempuan
                                 </span>
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-info"></i> Referral
-                                </span>
+                                    <i class="fas fa-circle text-info"></i> Keseluruhan
                             </div>
                         </div>
                     </div>
@@ -338,101 +375,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Color System -->
-                    <div class="row">
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-primary text-white shadow">
-                                <div class="card-body">
-                                    Primary
-                                    <div class="text-white-50 small">#4e73df</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-success text-white shadow">
-                                <div class="card-body">
-                                    Success
-                                    <div class="text-white-50 small">#1cc88a</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-info text-white shadow">
-                                <div class="card-body">
-                                    Info
-                                    <div class="text-white-50 small">#36b9cc</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-warning text-white shadow">
-                                <div class="card-body">
-                                    Warning
-                                    <div class="text-white-50 small">#f6c23e</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-danger text-white shadow">
-                                <div class="card-body">
-                                    Danger
-                                    <div class="text-white-50 small">#e74a3b</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card bg-secondary text-white shadow">
-                                <div class="card-body">
-                                    Secondary
-                                    <div class="text-white-50 small">#858796</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-6 mb-4">
-
-                    <!-- Illustrations -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                            </div>
-                            <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                        </div>
-                    </div>
-
-                    <!-- Approach -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                        </div>
-                        <div class="card-body">
-                            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                            <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
+            <!-- /.container-fluid -->
+            <footer class="mt-3">
+                <div class="sticky-footer my-auto text-center text-muted">
+                    <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+                </div>
+            </footer>
         </div>
-        <!-- /.container-fluid -->
-        <footer class="mt-3">
-            <div class="sticky-footer my-auto text-center text-muted">
-                <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
-            </div>
-        </footer>
     </div>
-</div>
-<!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->

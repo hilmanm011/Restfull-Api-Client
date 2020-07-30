@@ -11,6 +11,9 @@ class Auth extends CI_Controller
     public function index()
     {
 
+        // if ($this->session->userdata('username')) {
+        //     redirect('user');
+        // }
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required', [
             'required' => 'Username harus di isi!'
@@ -95,6 +98,9 @@ class Auth extends CI_Controller
 
     public function registrasi()
     {
+        // if ($this->session->userdata('username')) {
+        //     redirect('user');
+        // }
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama harus di isi!'
