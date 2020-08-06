@@ -1,13 +1,3 @@
-<!-- Footer -->
-<!-- <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Perencanaan Modal <?= date('Y'); ?></span>
-        </div>
-    </div>
-</footer> -->
-<!-- End of Footer -->
-
 </div>
 <!-- End of Content Wrapper -->
 
@@ -37,12 +27,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <script src="<?= base_url('assets/'); ?>vendor/chart.js/Chart.min.js"></script>
 

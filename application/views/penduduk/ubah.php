@@ -1,6 +1,5 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
-
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -12,44 +11,28 @@
     <div class="sidebar-heading">
         Admin
     </div>
-
-
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?= base_url('admin'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-
-
-
-
     <li class="nav-item active">
         <a class="nav-link active text-primary" href="<?= base_url('penduduk/index') ?>">
             <i class="fas fa-address-book" style="color: #1abc9c;"></i>
             <span>Kelola Data Penduduk</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-
-
-
-
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Kelola Data Keluarga</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -64,29 +47,24 @@
             </div>
         </div>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
     <!-- Heading -->
     <div class="sidebar-heading">
         Settings
     </div>
-
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Profile</span></a>
     </li>
-
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Akun</span></a>
     </li>
-
     <!-- Nav Item - Logout -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('auth/logout') ?>" data-toggle="modal" data-target="#logoutModal">
@@ -94,15 +72,12 @@
             <span>Logout</span>
         </a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
 </ul>
 <!-- End of Sidebar -->
 
@@ -111,7 +86,6 @@
     <!-- Main Content -->
     <div id="content">
         <!-- Topbar -->
-
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow justify-content-right">
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -143,12 +117,10 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Kelola Data Penduduk</h1>
             </div>
-
             <!-- Data Tabel Penduduk -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -159,7 +131,6 @@
                 <div class="row justify-content-center">
                     <div class="card-body col-lg-7">
                         <div class="card">
-
                             <div class="card-body">
                                 <form action="" method="post">
                                     <input type="hidden" name="id" value="<?= $penduduk['id']; ?>">
@@ -232,16 +203,17 @@
                                         <input type="text" name="agama" class="form-control" id="agama" value="<?= $penduduk['agama']; ?>">
                                         <small class="form-text text-danger"><?= form_error('agama'); ?></small>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="date_created"></label>
+                                        <p class="disabled" type="text" name="date_created" class="form-control" id="date_created" value="<?= $penduduk['date_created']; ?>">
+                                    </div>
                                     <a href="<?= base_url('penduduk'); ?>" class="btn btn-primary float-left"><i class="fas fa-caret-left"></i>Kembali</a>
                                     <button type="submit" name="ubah" class="btn btn-primary float-right">Ubah</button>
                                 </form>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

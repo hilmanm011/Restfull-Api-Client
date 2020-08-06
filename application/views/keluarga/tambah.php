@@ -36,14 +36,10 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
-
-
-
     <li class="nav-item active">
-        <a class="nav-link active text-primary" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book" style="color: #1abc9c;"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link active text-primary" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher" style="color: #1abc9c;"></i>
+            <span>Kelola Data Keluarga</span></a>
     </li>
 
     <!-- Divider -->
@@ -140,111 +136,89 @@
         </nav>
         <!-- End of Topbar -->
 
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Kelola Data Mahasiswa</h1>
+                <h1 class="h3 mb-0 text-gray-800">Kelola Data Keluarga</h1>
             </div>
 
-
-            <!-- Data Tabel Mahasiswa -->
+            <!-- Data Tabel Keluarga -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold"><a href="<?= base_url(); ?>mahasiswa/tambah" class="shadow-sm btn btn-primary mb-2">Tambah Data</a>
-
-                        <a href="<?= base_url('mahasiswa/pdf'); ?>" target="blank" class="shadow-sm btn btn-warning mb-2" style="color: white;"><i class="fa fa-download"></i> PDF</a>
+                    <div class="h5 card-header text-center text-primary">
+                        Form Tambah Data Keluarga
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="thead-dark">
-                                <tr class="text-center">
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>NRP</th>
-                                    <th>Email</th>
-                                    <th>Jurusan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="row justify-content-center">
+                    <div class="card-body col-lg-7">
+                        <div class="card">
 
-                                <?php if (empty($mahasiswa)) : ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        data tidak ditemukan.
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="id_kk">Nomor KK</label>
+                                        <input type="text" name="id_kk" class="form-control" id="id_kk">
+                                        <small class="form-text text-danger"><?= form_error('id_kk'); ?></small>
                                     </div>
-                                <?php endif; ?>
-                                <?php
-                                $no = 1;
-                                foreach ($mahasiswa as $mhs) : ?>
-                                    <tr>
-                                        <td class="text-center"><?= $no;
-                                                                $no++; ?></td>
-                                        <td><?= $mhs['nama']; ?></td>
-                                        <td><?= $mhs['nrp']; ?></td>
-                                        <td><?= $mhs['email']; ?></td>
-                                        <td><?= $mhs['jurusan']; ?></td>
-                                        <td class="text-center">
-                                            <a href="<?= base_url(); ?>mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-primary float-center"><i class="fas fa-user"></i> Lihat</a>
-                                            <a href="<?= base_url(); ?>mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge badge-success float-center"><i class="fas fa-edit"></i> Ubah</a>
-                                            <a href="<?= base_url() ?>mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge badge-danger float-center" data-toggle="modal" data-target="#hapusModal">
-                                                <i class="far fa-trash-alt"></i> Hapus
-                                            </a>
-                                        </td>
-                                    </tr> <?php endforeach; ?> </tbody>
-                        </table>
+                                    <div class="form-group">
+                                        <label for="jml_anggota">Jumlah Anggota</label>
+                                        <input type="text" name="jml_anggota" class="form-control" id="jml_anggota">
+                                        <small class="form-text text-danger"><?= form_error('jml_anggota'); ?></small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ibu">Ibu</label>
+                                        <input type="text" name="ibu" class="form-control" id="ibu">
+                                        <small class="form-text text-danger"><?= form_error('ibu'); ?></small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ayah">Ayah</label>
+                                        <input type="text" name="ayah" class="form-control" id="ayah">
+                                        <small class="form-text text-danger"><?= form_error('ayah'); ?></small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date_created"></label>
+                                        <p class="disabled" type="text" name="date_created" class="form-control" id="date_created">
+                                    </div>
+
+                                    <a href="<?= base_url('keluarga'); ?>" class="btn btn-primary float-left"><i class="fas fa-caret-left"></i>Kembali</a>
+                                    <button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <footer class="mt-3">
+            <div class="sticky-footer my-auto text-center text-secondary">
+                <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+            </div>
+        </footer>
     </div>
-    <footer class="mt-3">
-        <div class="sticky-footer my-auto text-center text-secondary">
-            <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
-        </div>
-    </footer>
-</div>
 
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Hapus Modal-->
-<div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id']; ?>">Ya</a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -1,26 +1,26 @@
 <?php
 
-class Mahasiswa extends CI_Controller
+class Keluarga extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Mahasiswa_model');
+        $this->load->model('Keluarga_model');
         $this->load->library('form_validation');
         $this->load->library('pdf');
     }
 
     public function index()
     {
-        $data['title'] = 'Daftar Mahasiswa';
-        $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+        $data['title'] = 'Daftar Keluarga';
+        $data['keluarga'] = $this->Keluarga_model->getAllKeluarga();
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
         if ($this->input->post('keyword')) {
-            $data['mahasiswa'] = $this->Mahasiswa_model->cariDataMahasiswa();
+            $data['keluarga'] = $this->Keluarga_model->cariDataKeluarga();
         }
         $this->load->view('templates/header', $data);
-        $this->load->view('mahasiswa/index', $data);
+        $this->load->view('keluarga/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -28,20 +28,18 @@ class Mahasiswa extends CI_Controller
     {
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data['title'] = 'Form Tambah Data Mahasiswa';
+        $data['title'] = 'Form Tambah Data Keluarga';
 
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('nrp', 'NRP', 'required|numeric');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('id_kk', 'Id_KK', 'required|numeric');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('mahasiswa/tambah', $data);
+            $this->load->view('keluarga/tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->Mahasiswa_model->tambahDataMahasiswa();
+            $this->Keluarga_model->tambahDataKeluarga();
             $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('mahasiswa');
+            redirect('keluarga');
         }
     }
 
@@ -49,19 +47,19 @@ class Mahasiswa extends CI_Controller
     {
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $this->Mahasiswa_model->hapusDataMahasiswa($id);
+        $this->Keluarga_model->hapusDataKeluarga($id);
         $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('mahasiswa');
+        redirect('keluarga');
     }
 
     public function detail($id)
     {
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data['title'] = 'Detail Data Mahasiswa';
-        $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
+        $data['title'] = 'Detail Data Keluarga';
+        $data['keluarga'] = $this->Keluarga_model->getKeluargaById($id);
         $this->load->view('templates/header', $data);
-        $this->load->view('mahasiswa/detail', $data);
+        $this->load->view('keluarga/detail', $data);
         $this->load->view('templates/footer');
     }
 
@@ -69,28 +67,26 @@ class Mahasiswa extends CI_Controller
     {
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
-        $data['title'] = 'Form Ubah Data Mahasiswa';
-        $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
-        $data['jurusan'] = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Planologi', 'Teknik Pangan', 'Teknik Lingkungan'];
+        $data['title'] = 'Form Ubah Data Keluarga';
+        $data['keluarga'] = $this->Keluarga_model->getKeluargaById($id);
+        // $data['jurusan'] = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Planologi', 'Teknik Pangan', 'Teknik Lingkungan'];
 
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('nrp', 'NRP', 'required|numeric');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('id_kk', 'Id_KK', 'required|numeric');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('mahasiswa/ubah', $data);
+            $this->load->view('keluarga/ubah', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->Mahasiswa_model->ubahDataMahasiswa();
+            $this->Keluarga_model->ubahDataKeluarga();
             $this->session->set_flashdata('flash', 'Diubah');
-            redirect('mahasiswa');
+            redirect('keluarga');
         }
     }
 
     public function pdf()
     {
-        $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+        $data['keluarga'] = $this->Keluarga_model->getAllKeluarga();
         $tanggal = date('d-m-Y');
 
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -111,10 +107,10 @@ class Mahasiswa extends CI_Controller
             <thead class="thead-dark">
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>NRP</th>
-                    <th>Email</th>
-                    <th>Jurusan</th>
+                    <th>Nomor KK</th>
+                    <th>Jumlah Anggota</th>
+                    <th>Ayah</th>
+                    <th>Ibu</th>
                 </tr>
             </thead>
         </table>';

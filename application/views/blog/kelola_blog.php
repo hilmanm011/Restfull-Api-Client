@@ -42,9 +42,9 @@
 
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Kelola Data Keluarga</span></a>
     </li>
 
     <!-- Divider -->

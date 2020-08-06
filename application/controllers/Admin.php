@@ -16,7 +16,7 @@ class Admin extends CI_Controller
 
         // date_default_timezone_set("Asia/Jakarta");
         parent::__construct();
-        $this->load->model('Mahasiswa_model');
+        $this->load->model('Keluarga_model');
         $this->load->model('Penduduk_model');
         is_logged_in();
     }
@@ -24,7 +24,7 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data['total_mhs'] = $this->Mahasiswa_model->getJmlMahasiswa();
+        $data['total_klrg'] = $this->Keluarga_model->getJmlKeluarga();
         $data['total_pndk'] = $this->Penduduk_model->getJmlPenduduk();
         $data['title'] = 'Home Admin Dashboard';
         $data['user'] =  $this->db->get_where('user', ['username' =>

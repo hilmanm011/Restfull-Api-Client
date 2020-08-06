@@ -36,14 +36,11 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
-
-
-
     <li class="nav-item active">
-        <a class="nav-link active text-primary" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book" style="color: #1abc9c;"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link active text-primary" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher" style="color: #1abc9c;"></i>
+            <span>Kelola Data Keluarga</span></a>
+
     </li>
 
     <!-- Divider -->
@@ -140,60 +137,71 @@
         </nav>
         <!-- End of Topbar -->
 
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Kelola Data Mahasiswa</h1>
+                <h1 class="h3 mb-0 text-gray-800">Detail Data Keluarga</h1>
             </div>
-
-            <!-- Data Tabel Mahasiswa -->
+            <!-- Data Tabel Keluarga -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="h5 card-header text-center text-primary">
-                        Form Ubah Data Mahasiswa
+                        Detail Data Keluarga
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="card-body col-lg-7">
-                        <div class="card">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="<?= base_url('assets/'); ?>img/profile/default.jpg" alt="" width="200" height="auto">
+                        </div>
+                        <div class="col-md-8">
+                            <table width="100%" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table border="0" width="100%" style="padding-left: 2px; padding-right: 13px;">
+                                                <tbody>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Nomor KK</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $keluarga['id_kk']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Jumlah Anggota</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $keluarga['jml_anggota']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Ibu</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $keluarga['ibu']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Ayah</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $keluarga['ayah']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Data Ditambahkan</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= date('d F Y', $keluarga['date_created']); ?></td>
+                                                    </tr>
 
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" value="<?= $mahasiswa['id']; ?>">
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" class="form-control" id="nama" value="<?= $mahasiswa['nama']; ?>">
-                                        <small class="form-text text-danger"><?= form_error('nama'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nrp">NRP</label>
-                                        <input type="text" name="nrp" class="form-control" id="nrp" value="<?= $mahasiswa['nrp']; ?>">
-                                        <small class="form-text text-danger"><?= form_error('nrp'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" class="form-control" id="email" value="<?= $mahasiswa['email']; ?>">
-                                        <small class="form-text text-danger"><?= form_error('email'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jurusan">Jurusan</label>
-                                        <select class="form-control" id="jurusan" name="jurusan">
-                                            <?php foreach ($jurusan as $j) : ?>
-                                                <?php if ($j == $mahasiswa['jurusan']) : ?>
-                                                    <option value="<?= $j; ?>" selected><?= $j; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $j; ?>"><?= $j; ?></option>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                    <a href="<?= base_url('mahasiswa'); ?>" class="btn btn-primary float-left"><i class="fas fa-caret-left"></i>Kembali</a>
-                                    <button type="submit" name="ubah" class="btn btn-primary float-right">Ubah Data</button>
-                                </form>
-                            </div>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <a href="<?= base_url(); ?>keluarga" class="btn btn-primary"><i class="fas fa-caret-left"></i>Kembali</a>
                         </div>
                     </div>
                 </div>
@@ -204,28 +212,3 @@
                 <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
             </div>
         </footer>
-    </div>
-
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>

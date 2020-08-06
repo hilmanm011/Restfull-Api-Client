@@ -33,18 +33,12 @@
             <i class="fas fa-address-book" style="color: #1abc9c;"></i>
             <span>Kelola Data Penduduk</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-
-
-
-
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Kelola Data Keluarga</span></a>
     </li>
 
     <!-- Divider -->
@@ -228,6 +222,10 @@
                                             <option value="Katolik">Katolik</option>
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date_created"></label>
+                                        <p class="disabled" type="text" name="date_created" class="form-control" id="date_created">
                                     </div>
                                     <a href="<?= base_url('penduduk'); ?>" class="btn btn-primary float-left"><i class="fas fa-caret-left"></i>Kembali</a>
                                     <button type="submit" name="tambah" class="btn btn-primary float-right">Simpan</button>

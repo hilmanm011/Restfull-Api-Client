@@ -2,7 +2,7 @@
 
 use GuzzleHttp\Client;
 
-class Mahasiswa_model extends CI_model
+class Keluarga_model extends CI_model
 
 {
 
@@ -17,32 +17,32 @@ class Mahasiswa_model extends CI_model
         ]);
     }
 
-    function get_data_nominal()
+    // function get_data_nominal()
+    // {
+    //     $query = $this->db->query("SELECT jenis_pembayaran,SUM(nominal_pembayaran) AS nominal_pembayaran FROM pembayaran GROUP BY jenis_pembayaran");
+
+    //     if ($query->num_rows() > 0) {
+    //         foreach ($query->result() as $data) {
+    //             $hasil[] = $data;
+    //         }
+    //         return $hasil;
+    //     }
+    // }
+
+    public function getJmlKeluarga()
     {
-        $query = $this->db->query("SELECT jenis_pembayaran,SUM(nominal_pembayaran) AS nominal_pembayaran FROM pembayaran GROUP BY jenis_pembayaran");
 
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $data) {
-                $hasil[] = $data;
-            }
-            return $hasil;
-        }
-    }
-
-    public function getJmlMahasiswa()
-    {
-
-        $response = $this->_client->request('GET', 'mahasiswa');
+        $response = $this->_client->request('GET', 'keluarga');
 
         $result = json_decode($response->getBody()->getContents(), true);
 
         return count($result['data']);
     }
 
-    public function getAllMahasiswa()
+    public function getAllKeluarga()
     {
 
-        $response = $this->_client->request('GET', 'mahasiswa');
+        $response = $this->_client->request('GET', 'keluarga');
 
         $result = json_decode($response->getBody()->getContents(), true);
 
@@ -51,10 +51,10 @@ class Mahasiswa_model extends CI_model
     }
 
 
-    public function getMahasiswaById($id)
+    public function getKeluargaById($id)
     {
-        // return $this->db->get_where('mahasiswa', ['id' => $id])->row_array();
-        $response = $this->_client->request('GET', 'mahasiswa', [
+
+        $response = $this->_client->request('GET', 'keluarga', [
             'query' => [
 
                 'id' => $id
@@ -67,17 +67,18 @@ class Mahasiswa_model extends CI_model
         return $result['data'][0];
     }
 
-    public function tambahDataMahasiswa()
+    public function tambahDataKeluarga()
     {
         $data = [
-            "nama" => $this->input->post('nama', true),
-            "nrp" => $this->input->post('nrp', true),
-            "email" => $this->input->post('email', true),
-            "jurusan" => $this->input->post('jurusan', true)
+            "id_kk" => $this->input->post('id_kk', true),
+            "jml_anggota" => $this->input->post('jml_anggota', true),
+            "ibu" => $this->input->post('ibu', true),
+            "ayah" => $this->input->post('ayah', true),
+            "date_created" => time()
         ];
 
-        // $this->db->insert('mahasiswa', $data);
-        $response = $this->_client->request('POST', 'mahasiswa', [
+
+        $response = $this->_client->request('POST', 'keluarga', [
             'form_params' => $data
         ]);
 
@@ -86,11 +87,11 @@ class Mahasiswa_model extends CI_model
         return $result;
     }
 
-    public function hapusDataMahasiswa($id)
+    public function hapusDataKeluarga($id)
     {
         // $this->db->where('id', $id);
-        // $this->db->delete('mahasiswa', ['id' => $id]);
-        $response = $this->_client->request('DELETE', 'mahasiswa', [
+        // $this->db->delete('keluarga', ['id' => $id]);
+        $response = $this->_client->request('DELETE', 'keluarga', [
             'form_params' => [
 
                 'id' => $id
@@ -105,19 +106,20 @@ class Mahasiswa_model extends CI_model
 
 
 
-    public function ubahDataMahasiswa()
+    public function ubahDataKeluarga()
     {
         $data = [
-            "nama" => $this->input->post('nama', true),
-            "nrp" => $this->input->post('nrp', true),
-            "email" => $this->input->post('email', true),
-            "jurusan" => $this->input->post('jurusan', true),
+            "id_kk" => $this->input->post('id_kk', true),
+            "jml_anggota" => $this->input->post('jml_anggota', true),
+            "ibu" => $this->input->post('ibu', true),
+            "ayah" => $this->input->post('ayah', true),
+            "date_created" => time(),
             "id" => $this->input->post('id', true)
         ];
 
         // $this->db->where('id', $this->input->post('id'));
-        // $this->db->update('mahasiswa', $data);
-        $response = $this->_client->request('PUT', 'mahasiswa', [
+        // $this->db->update('keluarga', $data);
+        $response = $this->_client->request('PUT', 'keluarga', [
             'form_params' => $data
         ]);
 

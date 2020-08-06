@@ -33,23 +33,15 @@
             <i class="fas fa-address-book" style="color: #1abc9c;"></i>
             <span>Kelola Data Penduduk</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-
-
-
-
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book"></i>
-            <span>Kelola Data Mahasiswa</span></a>
+        <a class="nav-link" href="<?= base_url('keluarga/index') ?>">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Kelola Data Keluarga</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -221,6 +213,11 @@
                                                         <td width="30%">Agama</td>
                                                         <td width="2%">:</td>
                                                         <td><?= $penduduk['agama']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Data Ditambahkan</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= date('d F Y', $penduduk['date_created']); ?></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
