@@ -70,21 +70,21 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Settings
     </div>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Profile</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Akun</span></a>
     </li>
 
     <!-- Nav Item - Logout -->
@@ -126,7 +126,7 @@
                     </a>
                     <!-- Dropdown - User Information  -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= base_url('admin/profile'); ?>">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
@@ -141,142 +141,107 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                <!-- Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow justify-content-right">
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <!-- Nav Item - User Information -->
-                    <ul class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small ">Admin</span>
-                                <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
-                            </a>
-                            <!-- Dropdown - User Information  -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('auth/logout') ?>" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </div>
-                    </ul>
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Detail Data Penduduk</h1>
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Detail Data Penduduk</h1>
+            </div>
+            <!-- Data Tabel Penduduk -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="h5 card-header text-center text-primary">
+                        Detail Data Penduduk
                     </div>
-                    <!-- Data Tabel Penduduk -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <div class="h5 card-header text-center text-primary">
-                                Detail Data Penduduk
-                            </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="<?= base_url('assets/'); ?>img/profile/default.jpg" alt="" width="200" height="auto">
                         </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="<?= base_url('assets/'); ?>img/profile/default.jpg" alt="" width="200" height="auto">
-                                </div>
-                                <div class="col-md-8">
-                                    <table width="100%" border="0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <table border="0" width="100%" style="padding-left: 2px; padding-right: 13px;">
-                                                        <tbody>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Nomor NIK</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['id_nik']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Nomor KK</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['id_kk']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Nama Lengkap</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['nama']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Tempat Lahir</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['tempat_lahir']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Tanggal Lahir</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['tanggal_lahir']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Jenis Kelamin</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['jk']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Status</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['status']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Alamat</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['alamat']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Pekerjaan</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['pekerjaan']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Kewarganegaraan</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['kewarganegaraan']; ?></td>
-                                                            </tr>
-                                                            <tr class="font-weight-bold">
-                                                                <td width="30%">Agama</td>
-                                                                <td width="2%">:</td>
-                                                                <td><?= $penduduk['agama']; ?></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <a href="<?= base_url(); ?>penduduk" class="btn btn-primary"><i class="fas fa-caret-left"></i>Kembali</a>
-                                </div>
-                            </div>
+                        <div class="col-md-8">
+                            <table width="100%" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table border="0" width="100%" style="padding-left: 2px; padding-right: 13px;">
+                                                <tbody>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Nomor NIK</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['id_nik']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Nomor KK</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['id_kk']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Nama Lengkap</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['nama']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Tempat Lahir</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['tempat_lahir']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Tanggal Lahir</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['tanggal_lahir']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Jenis Kelamin</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['jk']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Status</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['status']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Alamat</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['alamat']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Pekerjaan</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['pekerjaan']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Kewarganegaraan</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['kewarganegaraan']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="30%">Agama</td>
+                                                        <td width="2%">:</td>
+                                                        <td><?= $penduduk['agama']; ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <footer class="mt-3">
-                    <div class="sticky-footer my-auto text-center text-secondary">
-                        <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <a href="<?= base_url(); ?>penduduk" class="btn btn-primary"><i class="fas fa-caret-left"></i>Kembali</a>
+                        </div>
                     </div>
-                </footer>
+                </div>
+            </div>
+        </div>
+        <footer class="mt-3">
+            <div class="sticky-footer my-auto text-center text-secondary">
+                <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+            </div>
+        </footer>

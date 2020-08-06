@@ -40,9 +40,9 @@
 
 
 
-    <li class="nav-item active">
-        <a class="nav-link active text-primary" href="<?= base_url('mahasiswa/index') ?>">
-            <i class="fas fa-address-book" style="color: #1abc9c;"></i>
+    <li class="nav-item ">
+        <a class="nav-link" href="<?= base_url('mahasiswa/index') ?>">
+            <i class="fas fa-address-book"></i>
             <span>Kelola Data Mahasiswa</span></a>
     </li>
 
@@ -73,9 +73,9 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
+    <li class="nav-item active">
+        <a class="nav-link active text-primary" href="<?= base_url('admin/profile'); ?>">
+            <i class="fas fa-fw fa-chart-area" style="color: #1abc9c;"></i>
             <span>Profile</span></a>
     </li>
 
@@ -145,85 +145,77 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Kelola Data Mahasiswa</h1>
+            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <?= $this->session->flashdata('message'); ?>
+                </div>
             </div>
 
-            <!-- Data Tabel Mahasiswa -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <div class="h5 card-header text-center text-primary">
-                        Form Tambah Data Mahasiswa
+            <div class="card mb-3 col-lg-8">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="card-body col-lg-7">
-                        <div class="card">
-
-                            <div class="card-body">
-                                <form action="" method="post">
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" class="form-control" id="nama">
-                                        <small class="form-text text-danger"><?= form_error('nama'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nrp">NRP</label>
-                                        <input type="text" name="nrp" class="form-control" id="nrp">
-                                        <small class="form-text text-danger"><?= form_error('nrp'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" class="form-control" id="email">
-                                        <small class="form-text text-danger"><?= form_error('email'); ?></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jurusan">Jurusan</label>
-                                        <select class="form-control" id="jurusan" name="jurusan">
-                                            <option value="Teknik Informatika">Teknik Informatika</option>
-                                            <option value="Teknik Industri">Teknik Industri</option>
-                                            <option value="Teknik Pangan">Teknik Pangan</option>
-                                            <option value="Teknik Mesin">Teknik Mesin</option>
-                                            <option value="Teknik Planologi">Teknik Planologi</option>
-                                            <option value="Teknik Lingkungan">Teknik Lingkungan</option>
-                                        </select>
-                                    </div>
-                                    <a href="<?= base_url('mahasiswa'); ?>" class="btn btn-primary float-left"><i class="fas fa-caret-left"></i>Kembali</a>
-                                    <button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
-                                </form>
-                            </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $user['nama']; ?></h5>
+                            <p class="card-text"><?= $user['username']; ?></p>
+                            <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        <footer class="mt-3">
-            <div class="sticky-footer my-auto text-center text-secondary">
-                <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
-            </div>
-        </footer>
+        <!-- /.container-fluid -->
     </div>
+    <footer class="mt-3">
+        <div class="sticky-footer my-auto text-center text-secondary">
+            <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+        </div>
+    </footer>
+</div>
 
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
-                </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Hapus Modal-->
+<div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a class="btn btn-primary" href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id']; ?>">Ya</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -71,21 +71,21 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Settings
     </div>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Profile</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Akun</span></a>
     </li>
 
     <!-- Nav Item - Logout -->
@@ -128,7 +128,7 @@
                     </a>
                     <!-- Dropdown - User Information  -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= base_url('admin/profile'); ?>">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
