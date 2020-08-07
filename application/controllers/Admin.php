@@ -16,6 +16,7 @@ class Admin extends CI_Controller
 
         // date_default_timezone_set("Asia/Jakarta");
         parent::__construct();
+        $this->load->library('form_validation');
         $this->load->model('Keluarga_model');
         $this->load->model('Penduduk_model');
         is_logged_in();
@@ -74,8 +75,6 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->load->view('templates/header', $data);
-        // $this->load->view('templates/sidebar', $data);
-        // $this->load->view('templates/topbar', $data);
         $this->load->view('my_user/profile', $data);
         $this->load->view('templates/footer');
     }
@@ -86,12 +85,10 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Profile';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
-        $this->form_validation->set_rules('nama', 'Full nama', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
             $this->load->view('my_user/edit', $data);
             $this->load->view('templates/footer');
         } else {
@@ -99,7 +96,7 @@ class Admin extends CI_Controller
             $username = $this->input->post('username');
 
             // cek jika ada gambar yang akan diupload
-            $upload_image = $_FILES['image']['nama'];
+            $upload_image = $_FILES['image']['name'];
 
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png';
@@ -124,8 +121,8 @@ class Admin extends CI_Controller
             $this->db->where('username', $username);
             $this->db->update('user');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-            redirect('my_user');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile Berhasil di update!</div>');
+            redirect('admin/profile');
         }
     }
 }
