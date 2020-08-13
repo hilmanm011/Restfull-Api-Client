@@ -68,17 +68,17 @@
         Settings
     </div>
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item  -->
     <li class="nav-item active">
         <a class="nav-link active text-primary" href="<?= base_url('admin/profile'); ?>">
-            <i class="fas fa-fw fa-chart-area" style="color: #1abc9c;"></i>
+            <i class="fas fa-user" style="color: #1abc9c;"></i>
             <span>Profile</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item-->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-user-cog"></i>
             <span>Akun</span></a>
     </li>
 
@@ -117,7 +117,7 @@
                 <div class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small "><?= $user['nama']; ?></span>
-                        <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
+                        <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>">
                     </a>
                     <!-- Dropdown - User Information  -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -141,77 +141,62 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <?= $this->session->flashdata('message'); ?>
-                </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Informasi Akun Profile</h1>
             </div>
-
-            <div class="card mb-3 col-lg-8">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
+            <div class="text-center">
+                <?= $this->session->flashdata('message'); ?></div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="h5 card-header text-center text-primary">
+                        Akun Profile
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $user['nama']; ?></h5>
-                            <p class="card-text"><?= $user['username']; ?></p>
-                            <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
+                </div>
+                <div class="card-body">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img px-3 py-3">
+                            </div>
+                            <div class="col-md-8">
+                                <table width="100%" border="0">
+                                    <tbody>
+                                        <tr">
+                                            <td class="col-md-4">
+                                                <table border="0" width="100%" style="padding-left: 2px; padding-right: 13px;" class="my-5">
+                                                    <tbody>
+                                                        <tr class="font-weight-bold">
+                                                            <td width="50%">Username</td>
+                                                            <td width="2%">:</td>
+                                                            <td><?= $user['username']; ?></td>
+                                                        </tr>
+                                                        <tr class="font-weight-bold">
+                                                            <td width="50%">Nama Lengkap</td>
+                                                            <td width="2%">:</td>
+                                                            <td><?= $user['nama']; ?></td>
+                                                        </tr>
+                                                        <tr class="font-weight-bold">
+                                                            <td width="50%">Akun dibuat</td>
+                                                            <td width="2%">:</td>
+                                                            <td><?= date('d F Y', $user['date_created']); ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="mb-3 mr-3">
+                            <a href="<?= base_url('admin/edit'); ?>" class="btn btn-primary float-right"><i class="fas fa-user-cog"></i> Edit Akun Profile</a>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <footer class="mt-3">
+                <div class="sticky-footer my-auto text-center text-secondary">
+                    <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
+                </div>
+            </footer>
         </div>
-        <!-- /.container-fluid -->
-    </div>
-    <footer class="mt-3">
-        <div class="sticky-footer my-auto text-center text-secondary">
-            <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
-        </div>
-    </footer>
-</div>
-
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Hapus Modal-->
-<!-- <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id']; ?>">Ya</a>
-            </div>
-        </div>
-    </div>
-</div> -->

@@ -61,7 +61,7 @@ class Admin extends CI_Controller
     public function kelola_blog()
     {
         $data['title'] = 'Halaman Kelola blog';
-        // $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->load->view('templates/header', $data);
@@ -82,7 +82,7 @@ class Admin extends CI_Controller
 
     public function edit()
     {
-        $data['title'] = 'Edit Profile';
+        $data['title'] = 'Setting Akun';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');

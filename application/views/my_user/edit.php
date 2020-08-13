@@ -68,17 +68,17 @@
         Settings
     </div>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item active">
-        <a class="nav-link active text-primary" href="<?= base_url('admin/profile'); ?>">
-            <i class="fas fa-fw fa-chart-area" style="color: #1abc9c;"></i>
+    <!-- Nav Item -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
+            <i class="fas fa-user"></i>
             <span>Profile</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
-            <i class="fas fa-fw fa-table"></i>
+    <!-- Nav Item-->
+    <li class="nav-item  active">
+        <a class="nav-link active text-primary" href="<?= base_url('admin/edit'); ?>">
+            <i class="fas fa-user-cog" style="color: #1abc9c;"></i>
             <span>Akun</span></a>
     </li>
 
@@ -117,7 +117,7 @@
                 <div class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small "><?= $user['nama']; ?></span>
-                        <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
+                        <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>">
                     </a>
                     <!-- Dropdown - User Information  -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -179,7 +179,7 @@
 
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary">Update Akun</button>
                         </div>
                     </div>
 

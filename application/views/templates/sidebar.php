@@ -53,16 +53,16 @@
     <div class="sidebar-heading">
         Settings
     </div>
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-user"></i>
             <span>Profile</span></a>
     </li>
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-user-cog"></i>
             <span>Akun</span></a>
     </li>
     <!-- Nav Item - Logout -->

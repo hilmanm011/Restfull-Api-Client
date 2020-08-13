@@ -69,17 +69,17 @@
         Settings
     </div>
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item  -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/profile'); ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-user"></i>
             <span>Profile</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item-->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/edit'); ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-user-cog"></i>
             <span>Akun</span></a>
     </li>
 
@@ -118,7 +118,7 @@
                 <div class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small "><?= $user['nama']; ?></span>
-                        <img class="img-profile rounded-circle" src="<?= base_url('assets/'); ?>img/profile/default.jpg">
+                        <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>">
                     </a>
                     <!-- Dropdown - User Information  -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -188,7 +188,6 @@
                                                         <td width="2%">:</td>
                                                         <td><?= date('d F Y', $keluarga['date_created']); ?></td>
                                                     </tr>
-
                                                 </tbody>
                                             </table>
                                         </td>
