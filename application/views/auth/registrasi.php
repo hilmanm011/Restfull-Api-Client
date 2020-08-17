@@ -17,7 +17,15 @@
                                 <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
+                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat" value="<?= set_value('alamat'); ?>">
+                                <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="no_telp" name="no_telp" placeholder="0891305XXXXX" value="<?= set_value('no_telp'); ?>">
+                                <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username">
                                 <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group row">

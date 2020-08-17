@@ -49,11 +49,11 @@ class Admin extends CI_Controller
     public function blog()
     {
         $data['title'] = 'Home Informasi Desa Bojongkeding';
-        // $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->load->view('user/header', $data);
-        $this->load->view('blog/index');
+        $this->load->view('blog/index', $data);
         $this->load->view('user/footer');
     }
 

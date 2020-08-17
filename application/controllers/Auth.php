@@ -128,6 +128,8 @@ class Auth extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 'image' => 'default.jpg',
+                'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+                'no_telp' => htmlspecialchars($this->input->post('no_telp', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 1,

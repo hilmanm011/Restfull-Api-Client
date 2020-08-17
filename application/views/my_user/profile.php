@@ -176,6 +176,16 @@
                                                             <td><?= $user['nama']; ?></td>
                                                         </tr>
                                                         <tr class="font-weight-bold">
+                                                            <td width="50%">Alamat</td>
+                                                            <td width="2%">:</td>
+                                                            <td><?= $user['alamat']; ?></td>
+                                                        </tr>
+                                                        <tr class="font-weight-bold">
+                                                            <td width="50%">Nomor HP</td>
+                                                            <td width="2%">:</td>
+                                                            <td><?= $user['no_telp']; ?></td>
+                                                        </tr>
+                                                        <tr class="font-weight-bold">
                                                             <td width="50%">Akun dibuat</td>
                                                             <td width="2%">:</td>
                                                             <td><?= date('d F Y', $user['date_created']); ?></td>
@@ -199,4 +209,22 @@
                     <p>Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
                 </div>
             </footer>
+        </div>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Anda Yakin?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>

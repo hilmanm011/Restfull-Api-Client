@@ -25,11 +25,13 @@ class User extends CI_Controller
     public function index()
     {
         $data['title'] = 'Home Informasi Desa Bojongkeding';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
         // $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->load->view('user/header', $data);
-        $this->load->view('user/home');
+        $this->load->view('user/home', $data);
         $this->load->view('user/footer');
     }
 }
