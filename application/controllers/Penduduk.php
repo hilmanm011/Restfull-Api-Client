@@ -128,6 +128,8 @@ class Penduduk extends CI_Controller
     {
         $data['title'] = 'Laporan Data Penduduk Desa Bojongkeding';
         $data['penduduk'] = $this->Penduduk_model->getAllPenduduk();
+        $data['total_pndk'] = $this->Penduduk_model->getJmlPenduduk();
+        $data['tanggal'] = date('d-m-Y');
         $this->load->view('print_penduduk', $data);
     }
 

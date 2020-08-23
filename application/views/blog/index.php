@@ -113,23 +113,65 @@
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ml-auto">
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
-            </div>
-            <div class="col-lg-4 mr-auto">
-                <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <!-- Data Tabel Penduduk -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php if (empty($penduduk)) : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            data tidak ditemukan.
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($penduduk as $pndk) : ?>
+                                        <tr>
+                                            <td class="text-center"><?= $no;
+                                                                    $no++; ?></td>
+                                            <td><?= $pndk['nama']; ?></td>
+                                            <td><?= $pndk['alamat']; ?></td>
+                                            <td><?= $pndk['tanggal_lahir']; ?></td>
+                                            <td><?= $pndk['jk']; ?></td>
+                                            <td class="text-center">
+
+                                                <div class="detail-item mx-auto" data-toggle="modal" data-target="#detailModal1">
+                                                    <div class="detail-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                                        <a href="#" class="text-center font-weight-normal text-gray-400"><i class="fas fa-user"></i> Lihat</a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <a href="<?= base_url(); ?>penduduk/detail/<?= $pndk['id']; ?>" class="badge badge-primary float-center"><i class="fas fa-user"></i> Lihat</a> -->
+                                            </td>
+                                        </tr> <?php endforeach; ?> </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- About Section Button-->
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/themes/freelancer/">
+            <a class="btn btn-xl btn-outline-light" href="<?= base_url(); ?>penduduk/export">
                 <i class="fas fa-download mr-2"></i>
-                Free Download!
+                Unduh Data!
             </a>
         </div>
     </div>
@@ -165,7 +207,7 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <!-- <label>Nomor Telp/HP</label> -->
-                            <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number." />
+                            <input class="form-control" id="phone" type="tel" placeholder="Nomor HP" required="required" data-validation-required-message="Please enter your phone number." />
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -301,6 +343,104 @@
                                 <i class="fas fa-times fa-fw"></i>
                                 Tutup
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Modal 1 -->
+<div class="detail-modal modal fade" id="detailModal1" tabindex="-1" role="dialog" aria-labelledby="detailModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button class="text-right px-3 py-3 close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+            </button>
+            <div class="modal-body text-left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="">
+                            <!-- Detail Modal - Title-->
+                            <div>
+                                <h2 class="text-center">Informasi Detail</h2>
+                            </div>
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <table width="100%" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table class="table" border="0" width="100%" style="padding-left: 2px; padding-right: 13px;">
+                                                <tbody>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Nomor NIK</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['id_nik']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Nomor KK</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['id_kk']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Nama Lengkap</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['nama']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Tempat Lahir</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['tempat_lahir']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Tanggal Lahir</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['tanggal_lahir']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Jenis Kelamin</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['jk']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Status</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['status']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Alamat</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['alamat']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Pekerjaan</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['pekerjaan']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Kewarganegaraan</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['kewarganegaraan']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Agama</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= $pndk['agama']; ?></td>
+                                                    </tr>
+                                                    <tr class="font-weight-bold">
+                                                        <td width="50%">Data Ditambahkan</td>
+                                                        <td width="20%">:</td>
+                                                        <td><?= date('d F Y', $pndk['date_created']); ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

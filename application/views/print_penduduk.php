@@ -5,18 +5,22 @@
     <title><?= $title; ?></title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="<?= base_url('assets/'); ?>assets_m/img/icon-desa.png" />
+    <link href="<?= base_url('assets/'); ?>css/styles.css" rel="stylesheet" />
 </head>
 
 
 <body>
 
 
-    <h1 style="text-align: center">Daftar Data Penduduk Desa Bojongkeding</h1>
-    <table border="1">
+    <h2 class="mb-5" style="text-align: center">Daftar Data Penduduk Desa Bojongkeding</h2>
+    <h5 class="container">Penduduk Tercatat / <?= $tanggal; ?></h5>
+    <h5 class="container">Total: <?= $total_pndk; ?> </h5>
+
+    <table class="container" border="1">
         <thead>
 
             <tr class="card-header text-center">
-                <td><b>NO</b></td>
+                <td class="text-center"><b>NO</b></td>
                 <td><b>ID NIK</b></td>
                 <td><b>ID KK</b></td>
                 <td><b>Nama</b></td>
@@ -50,7 +54,7 @@
                 $agama = $pndk['agama'];
             ?>
                 <tr>
-                    <td><?= $no++; ?></td>
+                    <td class="text-center"><?= $no++; ?></td>
                     <td><?= $id_nik; ?></td>
                     <td><?= $id_kk; ?></td>
                     <td><?= $nama; ?></td>
@@ -60,12 +64,16 @@
                     <td><?= $status; ?></td>
                     <td><?= $alamat; ?></td>
                     <td><?= $pekerjaan; ?></td>
-                    <td><?= $kewarganegaraan; ?></td>
+                    <td class="text-center"><?= $kewarganegaraan; ?></td>
                     <td><?= $agama; ?></td>
                 </tr>
         </tbody>
     <?php endforeach; ?>
     </table>
+
+
+
+    <p class="text-center mt-5">Copyright &copy; Kependudukan Desa Bojongkeding <?= date('Y'); ?></p>
 
     <script type="text/javascript">
         window.print();
