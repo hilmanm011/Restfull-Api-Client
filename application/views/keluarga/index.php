@@ -150,7 +150,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold"><a href="<?= base_url(); ?>keluarga/tambah" class="shadow-sm btn btn-primary mb-2">Tambah Data</a>
 
-                        <a href="<?= base_url('keluarga/pdf'); ?>" target="blank" class="shadow-sm btn btn-warning mb-2" style="color: white;"><i class="fa fa-download"></i> PDF</a>
+                        <a href="<?= base_url('keluarga/export'); ?>" target="blank" class="shadow-sm btn btn-warning mb-2" style="color: white;"><i class="fa fa-download"></i> PDF</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -179,7 +179,7 @@
                                         <td class="text-center"><?= $no;
                                                                 $no++; ?></td>
                                         <td><?= $klrg['id_kk']; ?></td>
-                                        <td><?= $klrg['jml_anggota']; ?></td>
+                                        <td class="text-center"><?= $klrg['jml_anggota'] . "  Anggota"; ?></td>
                                         <td><?= $klrg['ibu']; ?></td>
                                         <td><?= $klrg['ayah']; ?></td>
                                         <td class="text-center">

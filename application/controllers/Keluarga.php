@@ -118,4 +118,44 @@ class Keluarga extends CI_Controller
         $tanggal = date('d-m-Y');
         $pdf->Output('file-pdf-' . $tanggal . '.pdf', 'I');
     }
+
+    public function export()
+    {
+        $data = $this->Keluarga_model->getAllKeluarga();
+        $total_klrg = $this->Keluarga_model->getJmlKeluarga();
+        $tanggal = date('d-m-Y');
+
+        $pdf = new \TCPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('', 'B', 12);
+        $pdf->Cell(0, 0, "Daftar Data Keluarga Desa Bojongkeding", 0, 1, 'C');
+        $pdf->SetAutoPageBreak(true, 0);
+
+        // Add Header
+        $pdf->Ln(10);
+        $pdf->SetFont('', 'B', 10);
+        $pdf->Cell(10, 8, "Keluarga Tercatat / " . $tanggal, 0, 1, 'L');
+        $pdf->Cell(10, 8, "Jumlah Total Data:  " . $total_klrg, 0, 1, 'L');
+        $pdf->Cell(10, 8, "No", 1, 0, 'C');
+        $pdf->Cell(50, 8, "Nomor KK", 1, 0, 'C');
+        $pdf->Cell(50, 8, "Jumlah Anggota", 1, 0, 'C');
+        $pdf->Cell(50, 8, "Ibu", 1, 0, 'C');
+        $pdf->Cell(30, 8, "Ayah", 1, 0, 'C');
+        $pdf->SetFont('', '', 10);
+        foreach ($data as $k => $keluarga) {
+            $this->addRow($pdf, $k + 1, $keluarga);
+        }
+        $tanggal = date('d-m-Y');
+        $pdf->Output('Laporan keluarga - ' . $tanggal . '.pdf', 'D');
+        $pdf->Output('Total - ' . $total_klrg . '.pdf', 'D');
+    }
+    private function addRow($pdf, $no, $keluarga)
+    {
+        $pdf->Cell(10, 8, '', 0, 1, 'R');
+        $pdf->Cell(10, 8, $no, 1, 0, 'C');
+        $pdf->Cell(50, 8, $keluarga['id_kk'], 1, 0, 'C');
+        $pdf->Cell(50, 8, $keluarga['jml_anggota'], 1, 0, 'C');
+        $pdf->Cell(50, 8, $keluarga['ibu'], 1, 0, 'L');
+        $pdf->Cell(30, 8, $keluarga['ayah'], 1, 0, 'C');
+    }
 }

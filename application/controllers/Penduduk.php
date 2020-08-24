@@ -136,6 +136,7 @@ class Penduduk extends CI_Controller
     public function export()
     {
         $data = $this->Penduduk_model->getAllPenduduk();
+        $total_pndk = $this->Penduduk_model->getJmlPenduduk();
         $tanggal = date('d-m-Y');
 
         $pdf = new \TCPDF();
@@ -148,6 +149,7 @@ class Penduduk extends CI_Controller
         $pdf->Ln(10);
         $pdf->SetFont('', 'B', 10);
         $pdf->Cell(10, 8, "Penduduk Tercatat / " . $tanggal, 0, 1, 'L');
+        $pdf->Cell(10, 8, "Jumlah Total Data:  " . $total_pndk, 0, 1, 'L');
         $pdf->Cell(10, 8, "No", 1, 0, 'C');
         $pdf->Cell(50, 8, "Nomor NIK", 1, 0, 'C');
         $pdf->Cell(50, 8, "Nama", 1, 0, 'C');
@@ -159,6 +161,7 @@ class Penduduk extends CI_Controller
         }
         $tanggal = date('d-m-Y');
         $pdf->Output('Laporan penduduk - ' . $tanggal . '.pdf', 'D');
+        $pdf->Output('Total - ' . $total_pndk . '.pdf', 'D');
     }
     private function addRow($pdf, $no, $penduduk)
     {
@@ -168,11 +171,5 @@ class Penduduk extends CI_Controller
         $pdf->Cell(50, 8, $penduduk['nama'], 1, 0, 'L');
         $pdf->Cell(50, 8, $penduduk['alamat'], 1, 0, 'L');
         $pdf->Cell(30, 8, $penduduk['jk'], 1, 0, 'C');
-
-        // $pdf->Cell(10, 8, $no, 1, 0, 'C');
-        // $pdf->Cell(55, 8, $penduduk['id_nik'], 1, 0, '');
-        // $pdf->Cell(35, 8, date('d-m-Y', strtotime($penduduk['tanggal'])), 1, 0, 'C');
-        // $pdf->Cell(35, 8, $penduduk['id_kk'], 1, 0, 'C');
-        // $pdf->Cell(50, 8, "." . number_format($penduduk['total'], 2, ',', '.'), 1, 1, 'L');
     }
 }

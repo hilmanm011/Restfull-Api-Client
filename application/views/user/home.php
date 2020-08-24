@@ -157,7 +157,7 @@
 
                                                 <div class="detail-item mx-auto" data-toggle="modal" data-target="#detailModal1">
                                                     <div class="detail-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                        <a href="#" class="text-center font-weight-normal text-gray-400"><i class="fas fa-user"></i> Lihat</a>
+                                                        <a href="#" class="text-center font-weight-normal"><i class="fas fa-user"></i> Lihat</a>
                                                     </div>
                                                 </div>
 
