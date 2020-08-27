@@ -27,10 +27,14 @@ class Admin extends CI_Controller
     {
         $data['total_klrg'] = $this->Keluarga_model->getJmlKeluarga();
         $data['total_pndk'] = $this->Penduduk_model->getJmlPenduduk();
+        $data['total_prm'] = $this->Penduduk_model->getPendudukPerempuan();
+        $data['total_lk'] = $this->Penduduk_model->getPendudukLaki();
         $data['title'] = 'Home Admin Dashboard';
         $data['user'] =  $this->db->get_where('user', ['username' =>
         $this->session->userdata('username')])->row_array();
 
+        // $cek= $this->Penduduk_model->getAllPenduduk();
+        // $data=
 
 
 

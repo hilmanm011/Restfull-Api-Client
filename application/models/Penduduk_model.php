@@ -55,6 +55,31 @@ class Penduduk_model extends CI_model
         return $result['data'][0];
     }
 
+    public function getPendudukPerempuan()
+    {
+        // return $this->db->get_where('mahasiswa', ['id' => $id])->row_array();
+        $response = $this->_client->request('GET', 'penduduk?jk = Perempuan');
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return count($result['data']);
+    }
+    public function getPendudukLaki()
+    {
+        // return $this->db->get_where('mahasiswa', ['id' => $id])->row_array();
+        $response = $this->_client->request('GET', 'penduduk', [
+            'form_params' => [
+
+                'jk' => 'Laki-Laki',
+            ]
+
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return count($result['data']);
+    }
+
     public function tambahDataPenduduk()
     {
         $data = [

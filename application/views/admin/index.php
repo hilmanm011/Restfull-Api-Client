@@ -53,17 +53,17 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Laki-Laki</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $total_lk; ?></div>
                                 </div>
-                                <div class="col">
+                                <!-- <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            <i class="fas fa-male fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -77,10 +77,10 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Perempuan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_prm; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fas fa-female fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -100,25 +100,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="text-center" style="color: #1cc88a;">Informasi Statistik</h5>
-            <canvas class="content-right" id="canvas" width="1000" height="280"></canvas>
+            <h5 class="text-center" style="color: #1cc88a;">Informasi Kependudukan Desa Bojongkeding</h5>
+            <!-- <canvas class="content-right" id="canvas" width="1000" height="280"></canvas> -->
+            <canvas id="myChart"></canvas>
             <!--Load chart js-->
-            <script type="text/javascript" src="<?php echo base_url() . 'assets/chartjs/chart.min.js' ?>"></script>
-            <script>
-                var barChartData = {
-                    labels: <?php echo json_encode($total_mhs); ?>,
-                    datasets: [{
-                        fillColor: "#1cc88a",
-                        strokeColor: "rgba(60,141,188,0.8)",
-                        pointColor: "#3b8bba",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(152,235,239,1)",
-                        data: <?php echo json_encode($total_pndk); ?>
-                    }]
-                }
-                var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
-            </script>
+
         </div>
     </div>
 
@@ -184,13 +170,12 @@
                     </div>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Laki-Laki
+                            <i class="fas fa-circle text-primary"></i> Admin
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Perempuan
+                            <i class="fas fa-circle text-success"></i> Member
                         </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Keseluruhan
+
                     </div>
                 </div>
             </div>
@@ -231,3 +216,44 @@
         </div>
     </div>
 </div>
+<!-- <script type="text/javascript" src="<?php echo base_url() . 'assets/chartjs/chart.min.js' ?>"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Data Penduduk', 'Data Keluarga', 'Laki-Laki', 'Perempuan'],
+            datasets: [{
+                label: 'Jumlah Total',
+                data: [<?= $total_pndk; ?>, <?= $total_klrg; ?>, <?= $total_lk; ?>, <?= $total_prm; ?>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
